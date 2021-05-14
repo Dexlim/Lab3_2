@@ -9,6 +9,7 @@ namespace Lab3_2
             Blokada semafory = new Blokada();
             var Filozofowie = new Laboratorium3_2(semafory);
             Filozofowie.Run();
+            Filozofowie.Join();
         }
     }
 }
