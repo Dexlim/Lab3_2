@@ -6,6 +6,7 @@ namespace Lab3_2
     {
         public Semaphore lokaj = new Semaphore(4,4);
         public SemaphoreSlim[] sem = new SemaphoreSlim[5];
+
         public Dane()
         {
             for(int i = 0; i < 5; i++)
