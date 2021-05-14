@@ -5,16 +5,19 @@ namespace Lab3_2
 {
     class Filozof
     {
+        private const int CZAS_JEDZENIA = 3000;
+
         private Thread watek;
-        private Dane semafory;
+        private Blokada semafory;
         private int id;
 
-        public Filozof(Dane semafory,int id)
+        public Filozof(Blokada semafory,int id)
         {
             this.watek = new Thread(FunkcjaWatku);
             this.semafory = semafory;
             this.id = id;
         }
+
         public void Start()
         {
             watek.Start();
@@ -30,15 +33,27 @@ namespace Lab3_2
             while (true)
             {
                 Console.WriteLine($"Filozof[{id}]: filozofuje...");
-                semafory.lokaj.WaitOne();
-                semafory.sem[id].Wait();
-                semafory.sem[(id + 1) % 5].Wait();
+                ZamknijSemafory();
+
                 Console.WriteLine($"\t\t\t\t\tFilozof[{id}]: je...");
-                Thread.Sleep(3000); // zakladamy ze filozof je 3 sekundy
-                semafory.sem[id].Release();
-                semafory.sem[(id + 1) % 5].Release();
-                semafory.lokaj.Release();
+                Thread.Sleep(CZAS_JEDZENIA); 
+
+                OtworzSemafory();
             }
+        }
+
+        private void OtworzSemafory()
+        {
+            semafory.sem[id].Release();
+            semafory.sem[(id + 1) % semafory.LICZBA_FILOZOFOW].Release();
+            semafory.lokaj.Release();
+        }
+
+        private void ZamknijSemafory()
+        {
+            semafory.lokaj.WaitOne();
+            semafory.sem[id].Wait();
+            semafory.sem[(id + 1) % semafory.LICZBA_FILOZOFOW].Wait();
         }
     }
 }
