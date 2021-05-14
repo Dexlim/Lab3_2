@@ -2,9 +2,16 @@
 {
     class Laboratorium3_2
     {
-        Filozof[] filozofowie = new Filozof[5];
-        public Laboratorium3_2()
+        private Filozof[] filozofowie = new Filozof[5];
+        private Dane semafory;
+
+        public Laboratorium3_2(Dane semafory)
         {
+            this.semafory = semafory;
+            for(int i=0; i < 5; i++)
+            {
+                filozofowie[i] = new Filozof(semafory, i);
+            }
         }
 
         public void Run()
