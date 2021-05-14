@@ -9,6 +9,7 @@ namespace Lab3_2
             Dane semafory = new Dane();
             var Filozofowie = new Laboratorium3_2(semafory);
             Filozofowie.Run();
+            Console.WriteLine("test test");
         }
     }
 }
