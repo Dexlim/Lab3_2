@@ -6,7 +6,7 @@ namespace Lab3_2
     {
         static void Main(string[] args)
         {
-            Dane semafory = new Dane();
+            Blokada semafory = new Blokada();
             var Filozofowie = new Laboratorium3_2(semafory);
             Filozofowie.Run();
         }

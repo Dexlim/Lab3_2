@@ -3,9 +3,9 @@
     class Laboratorium3_2
     {
         private Filozof[] filozofowie = new Filozof[5];
-        private Dane semafory;
+        private Blokada semafory;
 
-        public Laboratorium3_2(Dane semafory)
+        public Laboratorium3_2(Blokada semafory)
         {
             this.semafory = semafory;
             for(int i=0; i < 5; i++)
@@ -21,6 +21,7 @@
                 filozof.Start();
             }
         }
+
         public void Join()
         {
             foreach(Filozof filozof in filozofowie)
