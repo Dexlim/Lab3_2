@@ -6,7 +6,8 @@ namespace Lab3_2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var Filozofowie = new Laboratorium3_2();
+            Filozofowie.Run();
         }
     }
 }
